@@ -1,0 +1,79 @@
+const modal = document.getElementById('videoModal');
+const frame = document.getElementById('videoFrame');
+const modalTitle = document.getElementById('modalTitle');
+const modalTag = document.getElementById('modalTag');
+
+function openVideo(id, title, tag, card) {
+  // Artmug embeds this page as one very tall cross-origin iframe.
+  // We cannot read the parent page's scroll position, so centering with
+  // position:fixed would center against the entire iframe (far below the user).
+  // Anchor the popup to the clicked card instead: the card is necessarily
+  // inside the viewer's current screen, so the player opens right where they clicked.
+  const rect = card.getBoundingClientRect();
+  const cardCenterY = rect.top + window.scrollY + rect.height / 2;
+  const modalHeight = Math.min(760, Math.max(620, window.innerWidth < 640 ? 690 : 760));
+  const modalTop = Math.max(0, cardCenterY - modalHeight / 2);
+
+  modal.style.height = `${modalHeight}px`;
+  modal.style.top = `${modalTop}px`;
+  modalTitle.textContent = title;
+  modalTag.textContent = tag;
+  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeVideo() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  frame.src = '';
+}
+
+document.querySelectorAll('.work-card').forEach(card => {
+  card.addEventListener('click', () => openVideo(
+    card.dataset.video,
+    card.dataset.title,
+    card.dataset.tag,
+    card
+  ));
+});
+
+document.querySelector('.close').addEventListener('click', closeVideo);
+modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) closeVideo();
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+// V12: restrained 3D card tilt only. No headline/mask/brush interaction.
+const canTilt = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+if (canTilt) {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    const limitX = card.classList.contains('work-card') ? 2.5 : 1.6;
+    const limitY = card.classList.contains('work-card') ? 3.2 : 2.0;
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - .5;
+      const ny = (e.clientY - r.top) / r.height - .5;
+      const rx = (-ny * limitX * 2).toFixed(2);
+      const ry = (nx * limitY * 2).toFixed(2);
+      card.classList.add('is-tilting');
+      card.style.transform = `perspective(950px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px) translateZ(0)`;
+    });
+    card.addEventListener('pointerleave', () => {
+      card.classList.remove('is-tilting');
+      card.style.transform = '';
+    });
+  });
+}
