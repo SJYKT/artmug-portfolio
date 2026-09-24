@@ -19,11 +19,25 @@
 
     <section class="hero hero-drive" id="hero">
       <div class="hero-atmosphere" aria-hidden="true">
-        <span class="hero-index">07</span>
+        <svg class="poster-chart" viewBox="0 0 1000 520" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="chartGlow" x1="0" x2="1">
+              <stop offset="0" stop-color="#7659f4" stop-opacity=".12"/>
+              <stop offset=".55" stop-color="#ff486f" stop-opacity=".52"/>
+              <stop offset="1" stop-color="#ff486f" stop-opacity=".10"/>
+            </linearGradient>
+          </defs>
+          <path class="chart-shadow" d="M0 438 C90 410 115 432 178 365 S284 334 338 302 S432 310 484 255 S576 214 632 226 S737 150 791 176 S904 106 1000 86"/>
+          <path class="chart-main" d="M0 438 C90 410 115 432 178 365 S284 334 338 302 S432 310 484 255 S576 214 632 226 S737 150 791 176 S904 106 1000 86"/>
+        </svg>
         <span class="speed-line speed-line-1"></span>
         <span class="speed-line speed-line-2"></span>
         <span class="speed-line speed-line-3"></span>
         <span class="hero-orb"></span>
+        <span class="chart-ring ring-now"></span>
+        <span class="chart-ring ring-later"></span>
+        <span class="poster-callout callout-now"><b>지금!</b><i>↙</i></span>
+        <span class="poster-callout callout-later"><b>몇 달 뒤</b><i>↖</i></span>
       </div>
 
       <div class="hero-rail reveal">
@@ -50,6 +64,7 @@
 
         <aside class="hero-card hero-price-card reveal">
           <div class="price-corner">OPEN / 01</div>
+          <div class="price-poster-badge">복잡한 플랜 <strong>✕</strong></div>
           <div class="tiny">NORMAL PRICE</div>
           <div class="price-old">300,000원</div>
           <div class="price-divider"></div>

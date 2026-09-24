@@ -384,3 +384,192 @@
   .modal{height:720px;padding:22px 14px 28px}
   .modal-card{width:min(330px,88vw)}
 }
+
+/* ===== V7 / POSTER IMPACT + RESPONSIVE 3D INTERACTION ===== */
+:root{
+  --impact:#ff334f;
+  --impact-dark:#161217;
+}
+
+/* Reference-inspired poster/chart atmosphere, while preserving the lavender brand. */
+.hero-drive{
+  min-height:790px;
+  background:
+    radial-gradient(circle at var(--px) var(--py),rgba(255,255,255,.94) 0 7%,rgba(255,255,255,.22) 23%,transparent 45%),
+    linear-gradient(128deg,#f3f0f7 0%,#fff 31%,#f4f0ff 61%,#fff1f6 100%);
+}
+.poster-chart{
+  position:absolute;
+  left:-5%;right:-5%;bottom:7%;
+  width:110%;height:66%;
+  opacity:.52;
+  filter:drop-shadow(0 8px 22px rgba(41,28,77,.08));
+  transform:translate3d(calc((var(--px) - 50%) * -.035),calc((var(--py) - 50%) * -.025),0);
+  transition:transform .16s linear;
+}
+.chart-shadow{fill:none;stroke:url(#chartGlow);stroke-width:28;stroke-linecap:round;opacity:.18}
+.chart-main{fill:none;stroke:#78879d;stroke-width:4;stroke-linecap:round;stroke-dasharray:5 8;opacity:.32}
+.chart-ring{
+  position:absolute;width:118px;height:118px;border-radius:50%;border:10px solid var(--impact);
+  box-shadow:0 0 0 4px rgba(255,255,255,.82),0 10px 28px rgba(255,51,79,.10);
+  transform:rotate(-8deg);
+}
+.ring-now{left:2.2%;bottom:7.5%;border-color:#252129}
+.ring-later{right:4%;top:7%;}
+.poster-callout{
+  position:absolute;z-index:1;display:flex;align-items:center;gap:8px;
+  font-family:"Black Han Sans","Noto Sans KR",sans-serif;
+  color:#fff;text-shadow:2px 2px 0 #151217,-1px -1px 0 #151217,1px -1px 0 #151217,-1px 1px 0 #151217;
+  transform:rotate(-8deg);
+}
+.poster-callout b{font-size:22px;font-weight:400;letter-spacing:-.06em}
+.poster-callout i{font-style:normal;font:900 48px/1 Arial;color:var(--impact);text-shadow:none}
+.callout-now{left:12.5%;bottom:5%}
+.callout-now i{color:#252129;transform:rotate(20deg)}
+.callout-later{right:7%;top:22%;transform:rotate(-11deg)}
+.callout-later i{transform:rotate(12deg)}
+
+/* Heavy poster typography inspired by the user's reference image. */
+.drive-title{filter:drop-shadow(0 8px 0 rgba(255,255,255,.72))}
+.drive-now,
+.drive-cta{
+  color:#fff;
+  -webkit-text-stroke:5px var(--impact-dark);
+  paint-order:stroke fill;
+  text-shadow:4px 5px 0 rgba(22,18,23,.12);
+}
+.drive-low,
+.drive-buy{
+  color:var(--impact);
+  -webkit-text-stroke:5px var(--impact-dark);
+  paint-order:stroke fill;
+  filter:none;
+  text-shadow:5px 6px 0 rgba(22,18,23,.10);
+}
+.drive-title:hover .drive-buy{color:#ff5a73;-webkit-text-stroke-color:var(--impact-dark)}
+.hero-caption{font-weight:950;color:#312b39}
+.hero-caption::before{content:"●";color:var(--impact);margin-right:8px;font-size:8px}
+
+.price-poster-badge{
+  position:relative;z-index:2;display:inline-flex;align-items:center;gap:7px;
+  margin:0 0 16px;padding:7px 10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;
+  color:#d7d1dc;background:rgba(255,255,255,.055);font-size:9px;font-weight:950;letter-spacing:.07em;
+}
+.price-poster-badge strong{font-size:18px;line-height:1;color:var(--impact)}
+.hero-price-card .price-old{position:relative;display:inline-block;text-decoration:none}
+.hero-price-card .price-old::before,
+.hero-price-card .price-old::after{
+  content:"";position:absolute;left:-3px;right:-8px;top:50%;height:4px;border-radius:10px;background:var(--impact);
+  transform-origin:center;
+}
+.hero-price-card .price-old::before{transform:rotate(7deg)}
+.hero-price-card .price-old::after{transform:rotate(-7deg)}
+.hero-price-card .price span{color:#fff;text-shadow:3px 3px 0 rgba(255,51,79,.42)}
+.hero-price-card .price-label{color:#ff96ab}
+
+/* 3D work cards: pointer position controls rotation and a small Z lift. */
+.work-grid{perspective:1400px}
+.work-card{
+  --rx:0deg;--ry:0deg;--gx:50%;--gy:50%;--lift:0px;
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform .38s cubic-bezier(.2,.82,.2,1),filter .38s ease;
+}
+.work-frame{
+  transform-style:preserve-3d;
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--lift)) translateZ(0);
+  transition:transform .16s ease-out,box-shadow .32s ease,border-color .32s ease;
+}
+.work-frame::before{
+  content:"";position:absolute;inset:-1px;z-index:4;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.38),rgba(255,255,255,.08) 18%,transparent 42%);
+  opacity:0;mix-blend-mode:screen;transition:opacity .25s ease;
+}
+.work-card.is-tilting{--lift:-8px;z-index:5;filter:drop-shadow(0 18px 28px rgba(51,35,92,.18))}
+.work-card.is-tilting .work-frame{border-color:rgba(118,89,244,.28);box-shadow:0 32px 70px rgba(56,40,100,.18)}
+.work-card.is-tilting .work-frame::before{opacity:1}
+.work-card.is-tilting .work-frame img{transform:scale(1.075) translateZ(22px);filter:saturate(1.08) contrast(1.06)}
+.work-card.is-tilting .work-meta{transform:translateZ(36px)}
+.work-card.is-tilting .work-no,.work-card.is-tilting .work-action{transform:translateZ(42px)}
+.work-meta,.work-no,.work-action{transition:transform .18s ease-out,opacity .28s ease}
+
+/* Other cards get a lighter, more restrained interaction. */
+.service,.faq,.panel,.order-card,.source-note{
+  transform:translateZ(0);
+  transition:transform .36s cubic-bezier(.2,.8,.2,1),box-shadow .36s ease,border-color .36s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .service:hover,.faq:hover,.source-note:hover{transform:translateY(-7px) rotateX(.8deg);box-shadow:0 24px 56px rgba(65,48,112,.11);border-color:#d2c8f1}
+  .panel:hover,.order-card:hover{transform:translateY(-5px);box-shadow:0 28px 70px rgba(65,48,112,.13)}
+  .chip:hover{transform:translateY(-2px);border-color:#c9bdf1;box-shadow:0 7px 18px rgba(85,63,156,.10)}
+  .chip{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+}
+
+/* Mobile first safeguards: no horizontal spill, touch-friendly, 2x2 portfolio. */
+@media (max-width:860px){
+  .hero-drive{min-height:auto}
+  .poster-chart{bottom:10%;height:48%;opacity:.35}
+  .ring-later{right:3%;top:5%;width:94px;height:94px;border-width:8px}
+  .ring-now{width:90px;height:90px;border-width:8px}
+  .callout-later{right:4%;top:17%}
+  .callout-now{left:10%;bottom:6%}
+  .poster-callout b{font-size:18px}
+  .poster-callout i{font-size:40px}
+}
+
+@media (max-width:640px){
+  body{background:#fff}
+  .page{width:100%;padding:0 12px 56px}
+  .topbar{gap:12px;font-size:8px;letter-spacing:.08em}
+  .brand,.status{white-space:nowrap}
+  .hero-drive{margin:4px 0 0;padding:14px 13px 68px;border-radius:22px}
+  .hero-stage{padding-top:34px}
+  .hero-rail{font-size:6.8px;letter-spacing:.11em;gap:8px}
+  .drive-title{line-height:.82}
+  .drive-now{font-size:clamp(34px,10.5vw,48px);-webkit-text-stroke:3px var(--impact-dark)}
+  .drive-low,.drive-buy{font-size:clamp(62px,19vw,92px);-webkit-text-stroke:3px var(--impact-dark)}
+  .drive-cta{font-size:clamp(42px,13vw,62px);-webkit-text-stroke:3px var(--impact-dark)}
+  .poster-chart{left:-18%;width:136%;height:44%;bottom:12%}
+  .chart-ring,.poster-callout{display:none}
+  .hero-price-card{padding:21px 18px;border-radius:22px}
+  .hero-price-card .price span{font-size:46px}
+  .hero-caption-row{margin-top:20px}
+  .hero-caption{font-size:8.5px}
+  .hero-drive .lede{font-size:11px;line-height:1.82}
+  .section{padding:52px 0}
+  .section-title{font-size:clamp(31px,10vw,46px)}
+  .portfolio-head{margin-bottom:20px}
+  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .work-frame{border-radius:17px}
+  .work-meta{left:11px;right:11px;bottom:11px}
+  .work-title{font-size:14px}
+  .work-tag{font-size:7.5px;margin-bottom:5px;letter-spacing:.08em}
+  .work-no{top:9px;left:9px;font-size:8px;padding:6px 7px}
+  .ticker{margin-top:22px}
+  .service{padding:19px;border-radius:18px}
+  .service h3{font-size:26px}
+  .service .service-price strong{font-size:26px}
+  .faq{padding:17px;border-radius:18px}
+  .source-table td{padding:12px 10px}
+  .order-card{padding:21px 16px;border-radius:22px}
+  .order-card h2{font-size:30px}
+  .order-form{padding:15px;font-size:11px}
+  .modal{height:760px;padding:22px 12px 30px}
+  .modal-card{width:min(322px,88vw)}
+}
+
+@media (max-width:380px){
+  .page{padding-left:9px;padding-right:9px}
+  .drive-low,.drive-buy{font-size:clamp(56px,18.5vw,78px)}
+  .work-grid{gap:7px}
+  .work-title{font-size:13px}
+  .work-tag{font-size:7px}
+  .hero-price-card .price span{font-size:42px}
+}
+
+@media (hover:none),(pointer:coarse){
+  .work-card,.work-frame{transform:none!important}
+  .work-card:active .work-frame{transform:scale(.985)!important}
+  .work-frame::before{display:none}
+  .service:active,.faq:active,.panel:active{transform:scale(.992)}
+}
