@@ -1,7 +1,7 @@
-아트머그의 빨간 YouTube 버튼 → HTML 삽입 창에 아래 코드를 붙여넣으세요.
+아트머그의 빨간 YouTube 버튼 → HTML 삽입 창에서 기존 iframe을 삭제한 뒤 아래 코드를 새로 넣으세요.
 
 <iframe
-src="https://sjykt.github.io/artmug-portfolio/?v=10"
+src="https://sjykt.github.io/artmug-portfolio/artmug-v11.html?build=20260925a"
 width="100%"
 style="width:100%;height:clamp(7000px, (768px - 100vw) * 9999, 9800px);border:0;display:block;margin:0;padding:0;overflow:hidden;"
 scrolling="no"
@@ -9,4 +9,5 @@ allow="fullscreen"
 allowfullscreen>
 </iframe>
 
-PC에서는 약 7000px, 모바일에서는 약 9800px 높이를 사용하도록 자동 분기됩니다.
+중요: 이번에는 기존 index.html?v=... 주소가 아니라 artmug-v11.html이라는 새 파일명을 사용합니다.
+아트머그에서 예전 iframe 문서를 캐시해도 새 URL이므로 V11을 새로 불러옵니다.
