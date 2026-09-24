@@ -1,9 +1,0 @@
-<iframe
-src="https://sjykt.github.io/artmug-portfolio/artmug-v12-clean.html?build=20260925c"
-width="100%"
-height="7000"
-style="width:100%;height:clamp(7000px,(768px - 100vw)*9999,9800px);border:0;display:block;margin:0;padding:0;overflow:hidden;"
-scrolling="no"
-allow="fullscreen"
-allowfullscreen>
-</iframe>
