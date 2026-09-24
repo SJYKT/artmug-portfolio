@@ -837,3 +837,77 @@
 @media (max-width:380px){
   .drive-lowbuy{font-size:clamp(66px,20vw,90px)}
 }
+
+/* ===== V10 / BRUSH-ERASE REVEAL ON 저점매수 =====
+   Reverse of an image-reveal interaction: the red fill is brushed away along
+   the pointer path, briefly exposing the page below with a glass/dash trail. */
+.hover-glass-ring,.glass-trail{display:none!important}
+
+.drive-lowbuy{
+  position:relative;
+  display:inline-block;
+  width:max-content;
+  max-width:none;
+  overflow:visible;
+  isolation:isolate;
+  cursor:crosshair;
+  color:transparent!important;
+  -webkit-text-stroke:0!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+.lowbuy-outline{
+  position:relative;
+  z-index:1;
+  display:block;
+  color:var(--impact);
+  -webkit-text-stroke:5px var(--impact-dark);
+  paint-order:stroke fill;
+  text-shadow:none;
+  filter:none;
+  user-select:none;
+}
+.drive-lowbuy.brush-ready .lowbuy-outline{
+  color:transparent;
+  -webkit-text-stroke:5px var(--impact-dark);
+}
+.lowbuy-fill-canvas,
+.lowbuy-glass-canvas{
+  position:absolute;
+  z-index:2;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+  opacity:0;
+}
+.lowbuy-glass-canvas{z-index:3}
+.drive-lowbuy.brush-ready .lowbuy-fill-canvas,
+.drive-lowbuy.brush-ready .lowbuy-glass-canvas{opacity:1}
+
+/* Let the word own more of the hero width without adding any fake shadow. */
+.drive-lowbuy{
+  font-size:clamp(140px,15.8vw,202px);
+  letter-spacing:-.09em;
+  transform:translateX(-8px) skewX(-4deg) scaleX(1.045);
+  transform-origin:left bottom;
+}
+
+@media (max-width:860px){
+  .drive-lowbuy{font-size:clamp(120px,20.5vw,172px)}
+}
+@media (max-width:640px){
+  .drive-lowbuy{
+    font-size:clamp(74px,21.5vw,108px);
+    letter-spacing:-.085em;
+    transform:translateX(-2px) skewX(-3deg);
+    cursor:default;
+  }
+  .lowbuy-outline,
+  .drive-lowbuy.brush-ready .lowbuy-outline{-webkit-text-stroke:3px var(--impact-dark)}
+}
+@media (max-width:380px){
+  .drive-lowbuy{font-size:clamp(67px,20.5vw,92px)}
+}

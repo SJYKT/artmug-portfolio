@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <main class="page">
@@ -33,7 +33,11 @@
           <div class="hero-kicker"><span>01 / OPENING OFFER</span><b>MOVE WITH THE SOUND.</b></div>
           <h1 class="display drive-title" aria-label="지금, 저점매수하세요.">
             <span class="drive-line drive-now">지금,</span>
-            <span class="drive-line drive-lowbuy" id="lowBuyText">저점매수<span class="hover-glass-ring" aria-hidden="true"></span></span>
+            <span class="drive-line drive-lowbuy" id="lowBuyText">
+              <span class="lowbuy-outline" id="lowBuyOutline">저점매수</span>
+              <canvas class="lowbuy-fill-canvas" id="lowBuyFillCanvas" aria-hidden="true"></canvas>
+              <canvas class="lowbuy-glass-canvas" id="lowBuyGlassCanvas" aria-hidden="true"></canvas>
+            </span>
             <span class="drive-line drive-cta">하세요.</span>
           </h1>
           <div class="hero-caption-row">
@@ -236,6 +240,6 @@
       <div class="player-shell"><iframe id="videoFrame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
   </div>
-  <script src="script.js?v=9" defer></script>
+  <script src="script.js?v=10" defer></script>
 </body>
 </html>

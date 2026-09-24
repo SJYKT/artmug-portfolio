@@ -1,12 +1,16 @@
-# ARTmug Portfolio V9
+# ARTmug Portfolio V10 — Brush Reveal
 
-변경 사항:
-- 저점매수 타이포를 데스크톱에서 훨씬 크게 확대해 왼쪽 공간을 채움
-- 빨간 Fill 고정 / 기본 Drop Shadow 없음
-- 마우스 주변에 유리질 DASH 원형 링 + 잔상 트레일 효과
-- BEST / GOOD / OK를 초록 / 골드 / 회색 계열로 구분하고 추천도 문구 추가
-- `styles.css?v=9`, `script.js?v=9`로 캐시 버스팅 적용
-- 모바일에서는 효과를 자동으로 끄고 타이포/표 크기를 화면에 맞춤
+이번 버전은 `저점매수` 인터랙션을 원형 오브젝트가 아니라 **실제 브러시 스트로크처럼 그려지는 역방향 리빌**로 변경했습니다.
 
-GitHub 저장소에서 `index.html`, `styles.css`, `script.js`를 덮어쓴 뒤 Commit하세요.
-아트머그 iframe은 `ARTMUG_EMBED.txt` 코드로 교체하세요.
+- 빨간 글자 Fill은 기본 상태에서 그대로 유지
+- 마우스를 움직인 경로만 약 120px 두께로 스르륵 지워짐
+- 지워진 부분에서 배경이 드러나고, 글자의 검은 외곽선은 유지
+- 지워진 경로 내부에 반투명 유리 하이라이트 + 얇은 DASH 라인이 잠깐 나타남
+- 약 0.9초 뒤 원래 빨간 Fill이 자연스럽게 복구
+- 원형 커서/원형 잔상은 완전히 제거
+- 모바일/터치에서는 효과를 끄고 정상적인 빨간 타이포만 표시
+- BEST / GOOD / OK 컬러 구분과 기존 포트폴리오 4열/모바일 2열 유지
+
+## 업로드
+GitHub 저장소 루트에 `index.html`, `styles.css`, `script.js`를 덮어쓰고 Commit 합니다.
+아트머그 iframe은 `ARTMUG_EMBED.txt`의 `?v=10` 코드를 사용하세요.
