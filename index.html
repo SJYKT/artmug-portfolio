@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <title>MV / PV Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,23 +17,56 @@
       <div class="status">PORTFOLIO OPEN</div>
     </div>
 
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">모션그래픽 · 문자PV · 비주얼 디렉팅</p>
-          <h1 class="display">지금,<br><span class="accent">저점매수</span>하세요.</h1>
+    <section class="hero hero-drive" id="hero">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <span class="hero-index">07</span>
+        <span class="speed-line speed-line-1"></span>
+        <span class="speed-line speed-line-2"></span>
+        <span class="speed-line speed-line-3"></span>
+        <span class="hero-orb"></span>
+      </div>
+
+      <div class="hero-rail reveal">
+        <span>PORTFOLIO OPEN / 2026</span>
+        <span>MV · PV · MOTION DESIGN</span>
+        <span>AVAILABLE FOR COMMISSION ↗</span>
+      </div>
+
+      <div class="hero-grid hero-stage">
+        <div class="hero-copy reveal">
+          <div class="hero-kicker"><span>01 / OPENING OFFER</span><b>MOVE WITH THE SOUND.</b></div>
+          <h1 class="display drive-title" aria-label="지금, 저점매수하세요.">
+            <span class="drive-line drive-now">지금,</span>
+            <span class="drive-line drive-low">저점</span>
+            <span class="drive-line drive-buy">매수</span>
+            <span class="drive-line drive-cta">하세요.</span>
+          </h1>
+          <div class="hero-caption-row">
+            <p class="hero-caption">모션그래픽 · 문자PV · 뮤비카피 · 비주얼 디렉팅</p>
+            <span class="hero-arrow">↘</span>
+          </div>
           <p class="lede">문자 PV와 뮤비카피 작업 경험은 있습니다. 다만 처음부터 전체 연출을 맡는 <strong>풀 MV 포트폴리오는 아직 많지 않습니다.</strong><br>그래서 지금, 풀 MV 작업은 <strong style="color:#694bec">포트폴리오 오픈가</strong>로 받고 있습니다. 싸게 받지만, <strong>결과물이 싸 보이게 만들 생각은 없습니다.</strong></p>
         </div>
-        <aside class="hero-card reveal">
+
+        <aside class="hero-card hero-price-card reveal">
+          <div class="price-corner">OPEN / 01</div>
           <div class="tiny">NORMAL PRICE</div>
           <div class="price-old">300,000원</div>
-          <div class="tiny" style="margin-top:18px;color:#684ee7">PORTFOLIO OPEN PRICE</div>
-          <div class="price"><span>70,000</span>원</div>
+          <div class="price-divider"></div>
+          <div class="tiny price-label">PORTFOLIO OPEN PRICE</div>
+          <div class="price"><span>70,000</span><em>원</em></div>
           <p class="sub">정가 30만원, 혹은 그 이상의 퀄리티를 보장합니다.</p>
           <div class="chip-row">
             <span class="chip">4K 60FPS</span><span class="chip">캐릭터 모션</span><span class="chip">썸네일 포함</span><span class="chip">곡 길이 동일가</span>
           </div>
+          <div class="price-stamp">PORTFOLIO<br>OPEN</div>
         </aside>
+      </div>
+
+      <div class="hero-bottom reveal">
+        <span>SCROLL TO EXPLORE</span>
+        <div class="hero-bottom-line"></div>
+        <span>SELECTED WORKS ↓</span>
       </div>
     </section>
 

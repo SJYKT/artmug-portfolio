@@ -11,7 +11,7 @@ function openVideo(id, title, tag, card) {
   // inside the viewer's current screen, so the player opens right where they clicked.
   const rect = card.getBoundingClientRect();
   const cardCenterY = rect.top + window.scrollY + rect.height / 2;
-  const modalHeight = Math.min(760, Math.max(620, window.innerWidth < 640 ? 690 : 760));
+  const modalHeight = window.innerWidth < 640 ? 720 : 860;
   const modalTop = Math.max(0, cardCenterY - modalHeight / 2);
 
   modal.style.height = `${modalHeight}px`;
@@ -54,3 +54,16 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: .12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+// Subtle pointer light for the opening section.
+const hero = document.getElementById('hero');
+if (hero) {
+  hero.addEventListener('pointermove', (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    hero.style.setProperty('--px', `${x}%`);
+    hero.style.setProperty('--py', `${y}%`);
+  });
+}
