@@ -3,7 +3,10 @@ const modal = document.getElementById('videoModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalTag = document.getElementById('modalTag');
 
-    function openVideo(id,title,tag){
+    function openVideo(id,title,tag,card){
+      const rect = card.getBoundingClientRect();
+      const cardTop = rect.top + window.scrollY;
+      modal.style.top = `${Math.max(0, cardTop - 90)}px`;
       modalTitle.textContent = title;
       modalTag.textContent = tag;
       frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
@@ -19,7 +22,7 @@ const modal = document.getElementById('videoModal');
     }
 
     document.querySelectorAll('.work-card').forEach(card=>{
-      card.addEventListener('click',()=>openVideo(card.dataset.video,card.dataset.title,card.dataset.tag));
+      card.addEventListener('click',()=>openVideo(card.dataset.video,card.dataset.title,card.dataset.tag,card));
     });
     document.querySelector('.close').addEventListener('click',closeVideo);
     modal.addEventListener('click',e=>{if(e.target===modal)closeVideo()});

@@ -183,7 +183,7 @@
     .footer strong{display:block;font-size:10px;letter-spacing:.2em;color:#6b55ce}
     .footer p{margin:6px 0 0;color:#6f6b74;font-size:12px}
 
-    .modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:rgba(11,9,15,.82);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:.24s ease}
+    .modal{position:absolute;left:0;right:0;top:0;z-index:1000;display:grid;place-items:center;padding:42px 24px;min-height:900px;background:rgba(11,9,15,.88);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:.24s ease}
     .modal.open{opacity:1;visibility:visible}
     .modal-card{width:min(440px,92vw);transform:translateY(18px) scale(.98);transition:.3s cubic-bezier(.2,.8,.2,1)}
     .modal.open .modal-card{transform:none}
