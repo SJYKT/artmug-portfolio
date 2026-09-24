@@ -1,23 +1,11 @@
-# Artmug Portfolio V7 — Poster Impact
+# ARTmug Portfolio V8
 
-업로드 파일:
-- `index.html`
-- `styles.css`
-- `script.js`
+- V7의 차트/원/화살표 장식 제거
+- `저점매수` 한 단어로 결합
+- 빨간 fill은 고정, 기본 drop shadow 제거
+- PC에서 `저점매수` 위로 마우스를 움직이면 포인터 주변에 유리 질감 + dashed 원형 링이 나타났다 사라짐
+- 모바일/터치에서는 해당 hover 효과 자동 비활성화
+- 기존 포트폴리오 3D 카드와 모바일 2x2 대응 유지
 
-GitHub 저장소 `artmug-portfolio`의 기존 3개 파일을 이 버전으로 덮어쓴 뒤 Commit하면 됩니다.
-
-## V7 변경점
-- 사용자 레퍼런스의 **굵은 검정 외곽선 + 빨간 강조 + 차트/원/화살표** 감성만 가져온 오프닝
-- 기존 라벤더/핑크 브랜드는 유지
-- 포트폴리오 카드 마우스 이동에 따라 3D tilt: Y축 약 ±6°, X축 약 ±4°, 살짝 Z lift
-- 포인터 위치에 하이라이트가 따라오는 glare 효과
-- 서비스/FAQ/패널 hover lift
-- 터치 기기에서는 3D hover 자동 비활성화하고 탭 피드백만 사용
-- PC 4열, 모바일 2×2 포트폴리오
-- 모바일 타이포/간격/가격 카드/신청 양식까지 별도 반응형 조정
-- Artmug embed 높이도 PC/모바일 자동 분기
-- KING 제외 4개 작업물 / `문자PV`, `뮤비카피` 한국어 표기 유지
-- 영상 팝업은 클릭한 카드 주변에 열리는 기존 방식 유지
-
-아트머그에는 `ARTMUG_EMBED.txt` 내용을 빨간 YouTube 버튼의 HTML 입력창으로 넣으세요.
+GitHub 저장소 루트에 `index.html`, `styles.css`, `script.js`를 덮어쓰고 커밋하세요.
+아트머그 iframe은 `ARTMUG_EMBED.txt` 내용을 사용하세요.

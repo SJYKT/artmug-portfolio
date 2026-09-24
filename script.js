@@ -95,3 +95,27 @@ if (canTilt) {
     });
   });
 }
+
+// V8: localized glass/dashed ring on the red 저점매수 headline.
+const lowBuyText = document.getElementById('lowBuyText');
+if (lowBuyText && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  let hideTimer = 0;
+  lowBuyText.addEventListener('pointerenter', () => {
+    clearTimeout(hideTimer);
+    lowBuyText.classList.add('ring-active');
+  });
+  lowBuyText.addEventListener('pointermove', (e) => {
+    const r = lowBuyText.getBoundingClientRect();
+    const x = Math.max(0, Math.min(r.width, e.clientX - r.left));
+    const y = Math.max(0, Math.min(r.height, e.clientY - r.top));
+    lowBuyText.style.setProperty('--ring-x', `${x}px`);
+    lowBuyText.style.setProperty('--ring-y', `${y}px`);
+    lowBuyText.classList.add('ring-active');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 220);
+  });
+  lowBuyText.addEventListener('pointerleave', () => {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 80);
+  });
+}
