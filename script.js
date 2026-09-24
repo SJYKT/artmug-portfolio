@@ -96,26 +96,51 @@ if (canTilt) {
   });
 }
 
-// V8: localized glass/dashed ring on the red 저점매수 headline.
+
+// V9: visible glass/dashed follower + short-lived cursor trail on 저점매수.
 const lowBuyText = document.getElementById('lowBuyText');
 if (lowBuyText && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
   let hideTimer = 0;
-  lowBuyText.addEventListener('pointerenter', () => {
-    clearTimeout(hideTimer);
-    lowBuyText.classList.add('ring-active');
-  });
-  lowBuyText.addEventListener('pointermove', (e) => {
+  let lastTrailAt = 0;
+
+  const setRingPosition = (e) => {
     const r = lowBuyText.getBoundingClientRect();
     const x = Math.max(0, Math.min(r.width, e.clientX - r.left));
     const y = Math.max(0, Math.min(r.height, e.clientY - r.top));
     lowBuyText.style.setProperty('--ring-x', `${x}px`);
     lowBuyText.style.setProperty('--ring-y', `${y}px`);
-    lowBuyText.classList.add('ring-active');
+    return {x, y};
+  };
+
+  const spawnTrail = (x, y) => {
+    const now = performance.now();
+    if (now - lastTrailAt < 48) return;
+    lastTrailAt = now;
+    const trail = document.createElement('span');
+    trail.className = 'glass-trail';
+    trail.style.left = `${x}px`;
+    trail.style.top = `${y}px`;
+    lowBuyText.appendChild(trail);
+    trail.addEventListener('animationend', () => trail.remove(), {once:true});
+  };
+
+  lowBuyText.addEventListener('pointerenter', (e) => {
     clearTimeout(hideTimer);
-    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 220);
+    const p = setRingPosition(e);
+    lowBuyText.classList.add('ring-active');
+    spawnTrail(p.x, p.y);
   });
+
+  lowBuyText.addEventListener('pointermove', (e) => {
+    const p = setRingPosition(e);
+    lowBuyText.classList.add('ring-active');
+    spawnTrail(p.x, p.y);
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 150);
+  });
+
   lowBuyText.addEventListener('pointerleave', () => {
     clearTimeout(hideTimer);
-    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 80);
+    hideTimer = setTimeout(() => lowBuyText.classList.remove('ring-active'), 70);
   });
 }

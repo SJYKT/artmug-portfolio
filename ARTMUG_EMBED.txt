@@ -1,7 +1,7 @@
 아트머그의 빨간 YouTube 버튼 → HTML 삽입 창에 아래 코드를 붙여넣으세요.
 
 <iframe
-src="https://sjykt.github.io/artmug-portfolio/?v=8"
+src="https://sjykt.github.io/artmug-portfolio/?v=9"
 width="100%"
 style="width:100%;height:clamp(7000px, (768px - 100vw) * 9999, 9800px);border:0;display:block;margin:0;padding:0;overflow:hidden;"
 scrolling="no"

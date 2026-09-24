@@ -1,11 +1,12 @@
-# ARTmug Portfolio V8
+# ARTmug Portfolio V9
 
-- V7의 차트/원/화살표 장식 제거
-- `저점매수` 한 단어로 결합
-- 빨간 fill은 고정, 기본 drop shadow 제거
-- PC에서 `저점매수` 위로 마우스를 움직이면 포인터 주변에 유리 질감 + dashed 원형 링이 나타났다 사라짐
-- 모바일/터치에서는 해당 hover 효과 자동 비활성화
-- 기존 포트폴리오 3D 카드와 모바일 2x2 대응 유지
+변경 사항:
+- 저점매수 타이포를 데스크톱에서 훨씬 크게 확대해 왼쪽 공간을 채움
+- 빨간 Fill 고정 / 기본 Drop Shadow 없음
+- 마우스 주변에 유리질 DASH 원형 링 + 잔상 트레일 효과
+- BEST / GOOD / OK를 초록 / 골드 / 회색 계열로 구분하고 추천도 문구 추가
+- `styles.css?v=9`, `script.js?v=9`로 캐시 버스팅 적용
+- 모바일에서는 효과를 자동으로 끄고 타이포/표 크기를 화면에 맞춤
 
-GitHub 저장소 루트에 `index.html`, `styles.css`, `script.js`를 덮어쓰고 커밋하세요.
-아트머그 iframe은 `ARTMUG_EMBED.txt` 내용을 사용하세요.
+GitHub 저장소에서 `index.html`, `styles.css`, `script.js`를 덮어쓴 뒤 Commit하세요.
+아트머그 iframe은 `ARTMUG_EMBED.txt` 코드로 교체하세요.

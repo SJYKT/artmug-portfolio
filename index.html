@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <main class="page">
@@ -167,10 +167,10 @@
     <section class="section">
       <p class="eyebrow reveal">03 · Source readiness</p>
       <h2 class="section-title reveal" style="margin-bottom:26px">일러스트는?</h2>
-      <table class="source-table reveal">
-        <tr><td>BEST</td><td><b>파츠 분리 PSD + 배경 소스</b>고급 캐릭터 모션 + 자연스러운 합성에 가장 유리</td></tr>
-        <tr><td>GOOD</td><td><b>통이미지 + 배경 소스</b>줌 / 패럴랙스 / 포지션 / 회전 / 왜곡으로 최대한 살림</td></tr>
-        <tr><td>OK</td><td><b>통이미지만 있음</b>배경은 모션그래픽 / 텍스처 / 빛 / 도형 기반으로 처리 가능</td></tr>
+      <table class="source-table reveal source-ranked">
+        <tr class="rank-best"><td><span class="rank-word">BEST</span><small>가장 추천</small></td><td><b>파츠 분리 PSD + 배경 소스</b>고급 캐릭터 모션 + 자연스러운 합성에 가장 유리</td></tr>
+        <tr class="rank-good"><td><span class="rank-word">GOOD</span><small>충분히 좋음</small></td><td><b>통이미지 + 배경 소스</b>줌 / 패럴랙스 / 포지션 / 회전 / 왜곡으로 최대한 살림</td></tr>
+        <tr class="rank-ok"><td><span class="rank-word">OK</span><small>작업 가능</small></td><td><b>통이미지만 있음</b>배경은 모션그래픽 / 텍스처 / 빛 / 도형 기반으로 처리 가능</td></tr>
       </table>
       <div class="source-note reveal"><b>파츠 분리가 없어도 작업 가능합니다.</b><br>가능한 범위에서 캐릭터 움직임을 최대한 넣고, 배경이 없다면 모션그래픽 중심으로 자연스럽게 구성합니다.</div>
     </section>
@@ -236,6 +236,6 @@
       <div class="player-shell"><iframe id="videoFrame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
   </div>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=9" defer></script>
 </body>
 </html>
