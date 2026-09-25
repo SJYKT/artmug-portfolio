@@ -18,7 +18,8 @@ function openVideo(id, title, tag, card) {
   modal.style.top = `${modalTop}px`;
   modalTitle.textContent = title;
   modalTag.textContent = tag;
-  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+  frame.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1&controls=1`;
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
 }
