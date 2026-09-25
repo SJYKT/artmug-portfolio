@@ -524,3 +524,69 @@ body{
   .source-table b{font-size:14px;margin-bottom:4px}
   .source-note{font-size:12.5px;padding:16px 14px}
 }
+
+/* =========================================================
+   BOLD FIX — force real heavy weights across browsers
+   ========================================================= */
+.hero-card .price,
+.hero-card .price span,
+.hero-card .price-old,
+.service .service-price strong,
+.service h3,
+.section-title,
+.source-table b,
+.source-table td:first-child span,
+.source-note b,
+.guarantee h3,
+.benefit h3,
+.faq .q,
+.order-card h2,
+.order-form b {
+  font-weight: 900 !important;
+  font-variation-settings: "wght" 900;
+  font-synthesis: weight;
+}
+
+/* Numbers/prices: tighter, heavier display treatment */
+.hero-card .price,
+.hero-card .price span,
+.hero-card .price-old,
+.service .service-price strong {
+  font-family: "Inter Tight", "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+}
+
+.hero-card .price {
+  font-size: 60px;
+  line-height: .90;
+  letter-spacing: -.075em;
+}
+
+.hero-card .price-old {
+  font-size: 28px;
+  letter-spacing: -.045em;
+}
+
+.service .service-price strong {
+  font-size: 38px;
+  line-height: .92;
+  letter-spacing: -.07em;
+}
+
+/* Source readiness: stronger hierarchy */
+.source-table b {
+  font-size: 16.5px;
+  line-height: 1.3;
+  letter-spacing: -.025em;
+}
+
+.source-table td:first-child span {
+  font-weight: 900 !important;
+  font-variation-settings: "wght" 900;
+}
+
+@media (max-width:640px) {
+  .hero-card .price { font-size: 50px; }
+  .hero-card .price-old { font-size: 24px; }
+  .service .service-price strong { font-size: 32px; }
+  .source-table b { font-size: 14.5px; }
+}
